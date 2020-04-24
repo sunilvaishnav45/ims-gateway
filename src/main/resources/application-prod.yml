@@ -8,20 +8,20 @@ zuul:
     routes:
       customer-service:
         path: /customer-service/**
-        url: http://localhost:8302/
+        url: https://ims-customer-service.herokuapp.com/
 
       order-service:
         path: /order-service/**
-        url: http://localhost:8303/
+        url: https://ims-order-service.herokuapp.com/
 
       product-service:
         path: /product-service/**
-        url: http://localhost:8304/
+        url: https://ims-product-service.herokuapp.com/
 
       user-service:
         path: /user-service/**
-        url: http://localhost:8305/
+        url: https://ims-user-service.herokuapp.com/
 
       db-service:
         path: /db-service/**
-        url: http://localhost:8306/
+        url: https://ims-db-service.herokuapp.com/
