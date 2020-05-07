@@ -21,6 +21,8 @@ zuul:
       user-service:
         path: /user-service/**
         url: https://ims-user-service.herokuapp.com/
+        stripPrefix : false
+        sensitiveHeaders : Cookie,Set-Cookie
 
       db-service:
         path: /db-service/**
