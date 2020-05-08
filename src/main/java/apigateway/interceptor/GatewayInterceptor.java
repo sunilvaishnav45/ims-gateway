@@ -25,14 +25,14 @@ public class GatewayInterceptor implements HandlerInterceptor {
         String mehtodType = request.getMethod();
         String authToken = request.getHeader("token");
         LOGGER.info("getURL "+getURL);
-//        if(authToken!=null && !authToken.isEmpty()){//Private Urls
-//            return true;
-//        }else{//Public URL
-//            if(("/api/user-service/login").equalsIgnoreCase(getURL) && "POST".equalsIgnoreCase(mehtodType))
-//                return true;
-//        }
-//        //Token has experied or no token in header
-//        response.sendError(401);
-        return true;
+        if(authToken!=null && !authToken.isEmpty()){//Private Urls
+            return true;
+        }else{//Public URL
+            if(("/api/user-service/login").equalsIgnoreCase(getURL) && "POST".equalsIgnoreCase(mehtodType))
+                return true;
+        }
+        //Token has experied or no token in header
+        response.sendError(401);
+        return false;
     }
 }
