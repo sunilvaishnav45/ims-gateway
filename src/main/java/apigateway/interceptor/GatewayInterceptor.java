@@ -24,8 +24,7 @@ public class GatewayInterceptor implements HandlerInterceptor {
         String getURL = request.getRequestURI();
         String mehtodType = request.getMethod();
         String authToken = request.getHeader("token");
-        LOGGER.info("getURL "+getURL);
-        if(authToken!=null && !authToken.isEmpty()){//Private Urls
+        if(authToken!=null && !authToken.isEmpty() && !jwtTokenUtil.isTokenExpired(authToken)){//Private Urls
             return true;
         }else{//Public URL
             if(("/api/user-service/login").equalsIgnoreCase(getURL) && "POST".equalsIgnoreCase(mehtodType))
