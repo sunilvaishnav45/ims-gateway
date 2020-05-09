@@ -30,6 +30,7 @@ public class GatewayInterceptor implements HandlerInterceptor {
             if(("/api/user-service/login").equalsIgnoreCase(getURL) && "POST".equalsIgnoreCase(mehtodType))
                 return true;
         }
+        LOGGER.info("Sending error");
         //Token has experied or no token in header
         response.sendError(401);
         return false;
