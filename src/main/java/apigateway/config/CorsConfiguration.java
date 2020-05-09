@@ -14,10 +14,10 @@ public class CorsConfiguration
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000","https://sunilvaishnav45.github.io",
+                registry.addMapping("/api/**")
+                        .allowedOrigins("http://localhost:3000","https://localhost:3000/","https://sunilvaishnav45.github.io",
                         "https://lalittanwar.github.io")
-                        .allowedMethods("GET", "POST","PUT", "DELETE");;
+                        .allowedMethods("GET", "POST","PUT", "DELETE");
             }
         };
     }
