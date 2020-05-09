@@ -15,7 +15,8 @@ public class CorsConfiguration
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
+                        .allowedOrigins("http://localhost:3000","https://sunilvaishnav45.github.io",
+                        "https://lalittanwar.github.io")
                         .allowedMethods("GET", "POST","PUT", "DELETE");;
             }
         };
