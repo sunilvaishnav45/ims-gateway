@@ -13,25 +13,9 @@ import java.util.List;
 @EnableWebMvc
 public class CorsConfiguration implements WebMvcConfigurer
 {
-    @Value("#{'${allowed.cross.origin}'.split(',')}")
-    private List<String> allowedCrossOrigin;
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer()
-    {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins(getOrigin())
-                        .allowedMethods("GET", "POST","PUT", "DELETE");
-            }
-        };
-    }
-
-    public String[] getOrigin() {
-        int size = allowedCrossOrigin.size();
-        String[] originArray = new String[size];
-        return allowedCrossOrigin.toArray(originArray);
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("GET", "POST","PUT", "DELETE");
     }
 }
