@@ -1,5 +1,6 @@
 package apigateway.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -8,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfiguration
 {
+    @Value("${allowed.cross.origin}")
+    String allowedCrossOrigin;
     @Bean
     public WebMvcConfigurer corsConfigurer()
     {
@@ -15,11 +18,7 @@ public class CorsConfiguration
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins(
-                                "http://localhost:3000",
-                                "https://localhost:3000/",
-                                "https://sunilvaishnav45.github.io",
-                                "https://lalittanwar.github.io")
+                        .allowedOrigins(allowedCrossOrigin)
                         .allowedMethods("GET", "POST","PUT", "DELETE");
             }
         };
