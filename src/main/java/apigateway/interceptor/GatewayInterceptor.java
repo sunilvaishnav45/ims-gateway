@@ -22,15 +22,14 @@ public class GatewayInterceptor implements HandlerInterceptor {
             (HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         String getURL = request.getRequestURI();
-        String mehtodType = request.getMethod();
         String authToken = request.getHeader("token");
-        if(authToken!=null && !authToken.isEmpty() && !jwtTokenUtil.isTokenExpired(authToken)){//Private Urls
+        LOGGER.info("getURL "+getURL+" authToken "+authToken +" method "+request.getMethod());
+        if(authToken!=null && !authToken.isEmpty()){//Private Urls
             return true;
         }else{//Public URL
-            if(("/api/user-service/login").equalsIgnoreCase(getURL) && "POST".equalsIgnoreCase(mehtodType))
+            if(("/api/user-service/login").equalsIgnoreCase(getURL))
                 return true;
         }
-        LOGGER.info("Sending error");
         //Token has experied or no token in header
         response.sendError(401);
         return false;
